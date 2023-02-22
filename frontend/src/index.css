@@ -1,13 +1,28 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0%;
+  background-color: antiquewhite;
+  color: dimgray;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+header {
+  background-color: burlywood;
+  margin: 0;
+  padding: 7px 70px;
+}
+
+.container a {
+  color: rgb(80, 55, 23);
+  text-decoration: none;
+}
+
+.googleMap {
+  height: 600px;
+  width: 50%;
+  margin-left: 80px;
+  margin-top: 80px;
+}
+
+nav a {
+  margin-left: 10px;
 }
