@@ -11,9 +11,19 @@ header {
   padding: 7px 70px;
 }
 
-.container a {
+.navigationBar a {
   color: rgb(80, 55, 23);
   text-decoration: none;
+}
+
+.navigationBar li {
+  display: inline;
+}
+
+.homeLink {
+  font-size: 30px;
+  font-weight: bold;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .googleMap {
