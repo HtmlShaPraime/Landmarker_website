@@ -1,9 +1,29 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
+import { useEffect, useState } from 'react';
 
 const Map = ({ center, zoom }) => {
 
-  const Marker = ({ text }) => <div>{text}</div>;
+  const Marker = ({ text }) => <p>{text}</p>;
+
+  const [landmarks, setLandmarks] = useState(null)
+
+  useEffect(() => {
+    const fetchLocations = async () => {
+      const response = await fetch('/server/locations')
+      const json = await response.json()
+
+      if (response.ok) {
+        setLandmarks(json)
+      }
+    }
+
+    fetchLocations()
+  }, [])
+
+  const handleMapClick = (event) => {
+    console.log("Clicked on map!", event.latLng.lat(), event.latLng.lng());
+  };
 
   return (
     <div className='googleMap'>
@@ -11,13 +31,24 @@ const Map = ({ center, zoom }) => {
         bootstrapURLKeys={{ key: 'AIzaSyCe7czOJ2TbTk6b7qVlni-MT4V0xMN0P38' }}
         defaultCenter={center}
         defaultZoom={zoom}
+        // onClick={handleMapClick}
+        yesIWantToUseGoogleMapApiInternals
+        onChildClick={(e) => handleMapClick(e)}
       >
-      <Marker
-        lat={42.698038021581375}
-        lng={23.32138233558241}
-        text="Sveta Sofiq"
-      />
+        {landmarks && landmarks.map((landmark) => (
+          <Marker
+            lat={landmark.latitude}
+            lng={landmark.longitude}
+            text={landmark.locationName}
+          />
+        ))}
       </GoogleMapReact>
+
+      <div className="test">
+        {landmarks && landmarks.map((landmark) => (
+          <p key={landmark._id}>{landmark.locationName}</p>
+        ))}
+      </div>
     </div>
   );
 };

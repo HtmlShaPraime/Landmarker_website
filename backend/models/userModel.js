@@ -5,14 +5,14 @@ const bcrypt = require('bcrypt')
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
-        type: String,
-        required: true
-    },
+    // firstName: {
+    //     type: String,
+    //     required: true
+    // },
+    // lastName: {
+    //     type: String,
+    //     required: true
+    // },
     email: {
         type: String,
         required: true,
@@ -24,9 +24,11 @@ const userSchema = new Schema({
     }
 })
 
-userSchema.statics.signup = async function(firstName, lastName, email, password) {
+// firstName, lastName, 
+userSchema.statics.signup = async function(email, password) {
 
-    if(!firstName || !lastName || !email || !password){
+    // !firstName || !lastName || 
+    if(!email || !password){
         throw Error('All fields have to be filled')
     }
     if(!validator.isEmail(email)){
@@ -43,9 +45,10 @@ userSchema.statics.signup = async function(firstName, lastName, email, password)
     }
 
     const salt = await bcrypt.genSalt(8)
-    const hash = await bcrypt.hash(password, salt)
+    const hash = await bcrypt.hash(password, salt) 
 
-    const user = await this.create({ firstName, lastName, email, password: hash })
+    //  firstName, lastName, 
+    const user = await this.create({email, password: hash })
 
     return user
 }
@@ -61,9 +64,8 @@ userSchema.statics.login = async function(email, password) {
         throw Error('No such email')
     }
 
-    const match = await bcrypt.compare(password, user.password)
-
-    if(!match){
+    const isMatch = await bcrypt.compare(password, user.password)
+    if(!isMatch){
         throw Error('Incorrect password')
     }
 
