@@ -38,17 +38,17 @@ userSchema.statics.signup = async function(email, password) {
         throw Error('Not a strong password')
     }
 
-    const exists = await this.findOne({ email })
+    const registered = await this.findOne({ email })
 
-    if(exists) {
-        throw Error('Email in use')
+    if(registered) {
+        throw Error('This email is taken')
     }
 
-    const salt = await bcrypt.genSalt(8)
-    const hash = await bcrypt.hash(password, salt) 
+    const mixer = await bcrypt.genSalt(8)
+    const hashedPassword = await bcrypt.hash(password, mixer)
 
     //  firstName, lastName, 
-    const user = await this.create({email, password: hash })
+    const user = await this.create({email, password: hashedPassword })
 
     return user
 }
@@ -64,8 +64,8 @@ userSchema.statics.login = async function(email, password) {
         throw Error('No such email')
     }
 
-    const isMatch = await bcrypt.compare(password, user.password)
-    if(!isMatch){
+    const correct = await bcrypt.compare(password, user.password)
+    if(!correct){
         throw Error('Incorrect password')
     }
 

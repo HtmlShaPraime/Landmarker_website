@@ -13,4 +13,5 @@ router.get('/locations', getLocations)
 
 router.post('/locations', locations)
 
+
 module.exports = router

@@ -22,7 +22,7 @@ const Map = ({ center, zoom }) => {
   }, [])
 
   const handleMapClick = (event) => {
-    console.log("Clicked on map!", event.latLng.lat(), event.latLng.lng());
+    console.log("Clicked on map!");
   };
 
   return (
@@ -37,6 +37,7 @@ const Map = ({ center, zoom }) => {
       >
         {landmarks && landmarks.map((landmark) => (
           <Marker
+            key={landmark._id}
             lat={landmark.latitude}
             lng={landmark.longitude}
             text={landmark.locationName}
