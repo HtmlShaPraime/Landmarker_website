@@ -8,7 +8,7 @@ body {
 header {
   background-color: burlywood;
   margin: 0;
-  padding: 7px 70px;
+  padding: 7px 20px;
 }
 
 .navigationBar a {
@@ -21,7 +21,8 @@ header {
 }
 
 .homeLink {
-  font-size: 30px;
+  text-align: center;
+  font-size: 4rem;
   font-weight: bold;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -33,6 +34,21 @@ header {
   margin-top: 80px;
 }
 
-nav a {
-  margin-left: 10px;
+/* nav {
+  background-color:burlywood;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
+
+nav a {
+  display: inline-block;
+  padding: 1rem;
+  margin: 0 1rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+} */
+

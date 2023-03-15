@@ -31,9 +31,8 @@ const Map = ({ center, zoom }) => {
         bootstrapURLKeys={{ key: 'AIzaSyCe7czOJ2TbTk6b7qVlni-MT4V0xMN0P38' }}
         defaultCenter={center}
         defaultZoom={zoom}
-        // onClick={handleMapClick}
         yesIWantToUseGoogleMapApiInternals
-        onChildClick={(e) => handleMapClick(e)}
+        onClick={(e) => handleMapClick(e)}
       >
         {landmarks && landmarks.map((landmark) => (
           <Marker
@@ -45,11 +44,11 @@ const Map = ({ center, zoom }) => {
         ))}
       </GoogleMapReact>
 
-      <div className="test">
+      {/* <div className="test">
         {landmarks && landmarks.map((landmark) => (
           <p key={landmark._id}>{landmark.locationName}</p>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
