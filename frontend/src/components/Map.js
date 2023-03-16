@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 const Map = ({ center, zoom }) => {
 
-  const Marker = ({ text }) => <p>{text}</p>;
+  const Marker = ({ text }) => <h3>{text}</h3>
 
   const [landmarks, setLandmarks] = useState(null)
 

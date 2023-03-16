@@ -16,7 +16,7 @@ const Navbar = () => {
                 <nav>
                     <ul>
                         <li className="homeLink"><Link to="/">Landmarker</Link></li>
-                        <li><Link to="/info">How does it work ?</Link></li>
+                        {/* <li><Link to="/info">How does it work ?</Link></li> */}
                         <li>{user && (
                             <div>
                                 <span>{user.email}</span>
