@@ -32,4 +32,18 @@ const getRequestedLocations = async (req, res) => {
     }
 }
 
-module.exports = { locations, getLocations, getRequestedLocations }
+const verifyLocations = async (req, res) => {
+    const {id} = req.params 
+    
+    try {
+        const locations = await Location.findOneAndUpdate({_id: id}, {
+            verified: true
+        })
+
+        res.status(200).json(locations)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+module.exports = { locations, getLocations, getRequestedLocations, verifyLocations }
