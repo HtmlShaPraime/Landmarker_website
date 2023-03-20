@@ -14,6 +14,10 @@ const locationSchema = new Schema({
     longitude: {
         type: Number,
         required: true
+    },
+    verified: {
+        type: Boolean,
+        required: true
     }
 })
 
@@ -32,7 +36,7 @@ locationSchema.statics.landmark = async function(locationName, latitude, longitu
         throw Error('There is a landmark with that name already')
     }
 
-    const location = await this.create({locationName, latitude, longitude})
+    const location = await this.create({locationName, latitude, longitude, verified: false})
 
     return location
 }

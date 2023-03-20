@@ -14,7 +14,7 @@ const locations = async (req, res) => {
 
 const getLocations = async (req, res) => {
     try {
-        const locations = await Location.find({})
+        const locations = await Location.find({verified: true})
 
         res.status(200).json(locations)
     } catch (error) {
@@ -22,4 +22,14 @@ const getLocations = async (req, res) => {
     }
 }
 
-module.exports = { locations, getLocations }
+const getRequestedLocations = async (req, res) => {
+    try {
+        const locations = await Location.find({verified: false})
+
+        res.status(200).json(locations)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+module.exports = { locations, getLocations, getRequestedLocations }
