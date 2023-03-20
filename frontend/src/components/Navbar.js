@@ -32,6 +32,12 @@ const Navbar = () => {
                             </div>
                             )}
                         </li>
+                        <li>{user && user.admin && (
+                            <div>
+                                <Link to="/accepting">Newly requested locations</Link>
+                            </div>
+                        )}
+                        </li>
                     </ul>
                 </nav>
             </div>
